@@ -10,7 +10,6 @@ while not done:
     for i in range(1, 4):
         print("Game ", i)
         answer = random.randint(1, 10)
-        print(answer)
         guess = 0
         guesses_this_round = 0
     
