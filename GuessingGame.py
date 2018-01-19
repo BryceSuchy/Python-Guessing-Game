@@ -15,12 +15,19 @@ while not done:
         guesses_this_round = 0
     
         while guess != answer:
-            guess = int(input("Pick a number from 1-10. (-1 to quit): "))
-            if guess < -1 or guess > 10:
-                while guess < -1 or guess > 10:
-                    print("Invalid input")
+            while True:
+                try:
                     guess = int(input("Pick a number from 1-10. (-1 to quit): "))
-            elif guess == -1:
+                except ValueError:
+                    print("Invalid input")
+                    continue
+                if guess < -1 or guess > 10:
+                    print("Sorry, the number must be from 1-10.")
+                    continue
+                else:
+                    guesses_this_round = guesses_this_round + 1
+                    break  
+            if guess == -1:
                 break
             elif guess < answer:
                 print("Too low!")
@@ -29,7 +36,7 @@ while not done:
             else:
                 print("That's right!")
                 print("It took you " + str(guesses_this_round) + " guesses!")
-                total_guesses += guesses_this_round
+                total_guesses = guesses_this_round
         if guess == -1:
             print("Thanks for playing!")
             break
